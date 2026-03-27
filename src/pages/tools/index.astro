@@ -1,0 +1,68 @@
+---
+import Base from "../../layouts/Base.astro";
+import { tools, categoryLabels } from "../../lib/toolMeta";
+import { Minimize2, Maximize2, Crop, ArrowRightLeft, ImageIcon, Paintbrush, Sparkles, Eraser, Droplets, Laugh, RotateCw, Code, ScanFace } from "lucide-react";
+
+const iconMap: Record<string, any> = {
+  Minimize2, Maximize2, Crop, ArrowRightLeft, ImageIcon, Paintbrush, Sparkles, Eraser, Droplets, Laugh, RotateCw, Code, ScanFace
+};
+
+function getIconComponent(iconName: string) {
+  return iconMap[iconName] || null;
+}
+
+const categories = [...new Set(tools.map(t => t.category))];
+---
+
+<Base
+  title="All Image Tools"
+  description="Browse all 16 free image tools - compress, resize, crop, convert, edit, and more. All run 100% in your browser."
+>
+  <section class="py-16 sm:py-20">
+    <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="max-w-3xl mx-auto text-center mb-12">
+        <h1 class="text-4xl font-extrabold text-[var(--color-text-main)] mb-4">All Free Image Tools</h1>
+        <p class="text-lg text-[var(--color-text-muted)]">
+          16 powerful tools to process your images, all running 100% in your browser. 
+          Upload your images and get results instantly - no uploads, no waiting, completely private.
+        </p>
+      </div>
+
+      {categories.map((category) => (
+        <div class="mb-12">
+          <h2 class="text-2xl font-bold text-[var(--color-text-main)] mb-6 flex items-center gap-2">
+            {categoryLabels[category] || category}
+          </h2>
+          <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+            {tools.filter(t => t.category === category).map((tool) => {
+              const IconComponent = getIconComponent(tool.icon.name);
+              return (
+                <a href={tool.href} class="tool-card group">
+                  <div class="flex items-center gap-3 mb-3">
+                    {IconComponent && <IconComponent class="w-8 h-8 text-[var(--color-primary)]" />}
+                    <h3 class="text-lg font-bold text-[var(--color-text-main)] group-hover:text-[var(--color-primary)] transition-colors">
+                      {tool.name}
+                    </h3>
+                    {tool.isNew && <span class="badge-new">NEW</span>}
+                  </div>
+                  <p class="text-sm text-[var(--color-text-muted)]">{tool.description}</p>
+                  <span class="inline-flex items-center gap-1 mt-4 text-sm font-medium text-[var(--color-primary)]">
+                    Try Now <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
+                  </span>
+                </a>
+              );
+            })}
+          </div>
+        </div>
+      ))}
+
+      <div class="mt-16 bg-[var(--color-surface-2)] rounded-2xl p-8">
+        <h2 class="text-2xl font-bold text-[var(--color-text-main)] mb-4">Need Help?</h2>
+        <p class="text-[var(--color-text-muted)] mb-4">
+          Can't find what you're looking for? Check our blog for tutorials and guides.
+        </p>
+        <a href="/blog" class="btn-primary">Visit the Blog</a>
+      </div>
+    </div>
+  </section>
+</Base>

@@ -1,0 +1,135 @@
+---
+import { tools, categoryLabels, getToolsByCategory } from "../../lib/toolMeta";
+import ThemeToggle from "./ThemeToggle";
+import type { LucideIcon } from "lucide-react";
+
+interface Props {
+  allToolsHref?: string;
+}
+
+const { allToolsHref = "/tools" } = Astro.props;
+
+const imageTools = getToolsByCategory("image");
+const convertTools = getToolsByCategory("convert");
+const editTools = getToolsByCategory("edit");
+const aiTools = getToolsByCategory("ai");
+
+interface DropdownGroup {
+  label: string;
+  items: { id: string; name: string; href: string; isNew?: boolean }[];
+}
+
+const dropdownGroups: DropdownGroup[] = [
+  {
+    label: categoryLabels.image,
+    items: imageTools.map((t) => ({ id: t.id, name: t.name, href: t.href, isNew: t.isNew })),
+  },
+  {
+    label: categoryLabels.convert,
+    items: convertTools.map((t) => ({ id: t.id, name: t.name, href: t.href, isNew: t.isNew })),
+  },
+  {
+    label: categoryLabels.edit,
+    items: editTools.map((t) => ({ id: t.id, name: t.name, href: t.href, isNew: t.isNew })),
+  },
+  {
+    label: categoryLabels.ai,
+    items: aiTools.map((t) => ({ id: t.id, name: t.name, href: t.href, isNew: t.isNew })),
+  },
+];
+---
+
+<header class="fixed top-0 left-0 right-0 z-50 bg-[var(--color-surface)] border-b border-[var(--color-border)]">
+  <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="flex items-center justify-between h-16">
+      <a href="/" class="flex items-center gap-2 group" aria-label="oriz home">
+        <span
+          class="text-2xl font-extrabold tracking-tight font-[var(--font-display)] text-[var(--color-primary)]"
+        >
+          oriz
+        </span>
+      </a>
+
+      <nav class="hidden lg:flex items-center gap-1" aria-label="Main navigation">
+        {
+          dropdownGroups.map((group) => (
+            <div class="relative group/dropdown">
+              <button
+                type="button"
+                class="flex items-center gap-1 px-3 py-2 text-sm font-semibold text-[var(--color-text-main)] hover:text-[var(--color-primary)] transition-colors"
+                aria-expanded="false"
+                aria-haspopup="true"
+              >
+                {group.label}
+                <svg
+                  class="w-4 h-4 transition-transform duration-200 group-hover/dropdown:rotate-180"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                  aria-hidden="true"
+                >
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+                </svg>
+              </button>
+              <div
+                class="absolute left-0 top-full pt-2 w-48 opacity-0 invisible translate-y-2 group-hover/dropdown:opacity-100 group-hover/dropdown:visible group-hover/dropdown:translate-y-0 transition-all duration-200"
+              >
+                <div class="bg-[var(--color-surface)] border border-[var(--color-border)] rounded-lg shadow-lg overflow-hidden">
+                  <ul class="py-2" role="menu">
+                    {group.items.map((item) => (
+                      <li role="menuitem">
+                        <a
+                          href={item.href}
+                          class="flex items-center justify-between px-4 py-2 text-sm text-[var(--color-text-main)] hover:bg-[var(--color-surface-2)] hover:text-[var(--color-primary)] transition-colors"
+                        >
+                          {item.name}
+                          {item.isNew && (
+                            <span class="badge-new text-[10px]">NEW</span>
+                          )}
+                        </a>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              </div>
+            </div>
+          ))
+        }
+
+        <a
+          href={allToolsHref}
+          class="ml-2 px-4 py-2 text-sm font-semibold text-[var(--color-text-main)] hover:text-[var(--color-primary)] transition-colors"
+        >
+          All Tools
+        </a>
+      </nav>
+
+      <div class="flex items-center gap-3">
+        <ThemeToggle client:load />
+
+        <button
+          type="button"
+          class="lg:hidden p-2 text-[var(--color-text-main)] hover:bg-[var(--color-surface-2)] rounded-lg transition-colors"
+          aria-label="Open navigation menu"
+          aria-expanded="false"
+          id="mobile-nav-toggle"
+        >
+          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+          </svg>
+        </button>
+      </div>
+    </div>
+  </div>
+</header>
+
+<script>
+  const toggle = document.getElementById("mobile-nav-toggle");
+  const mobileNavEvent = new CustomEvent("toggle-mobile-nav", {
+    detail: { open: true },
+  });
+
+  toggle?.addEventListener("click", () => {
+    document.dispatchEvent(mobileNavEvent);
+  });
+</script>

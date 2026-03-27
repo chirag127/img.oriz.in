@@ -1,0 +1,25 @@
+---
+import ToolLayout from "../../layouts/ToolLayout.astro";
+import HtmlToImage from "../../components/tools/HtmlToImage";
+import { getToolById } from "../../lib/toolMeta";
+
+const tool = getToolById("html-to-image")!;
+
+const faqItems = [
+  { question: "How do I convert HTML to image?", answer: "Paste your HTML and CSS code in the text area, set viewport width, choose output format (JPG/SVG), and click Convert." },
+  { question: "What viewport sizes are available?", answer: "Choose from mobile (375px), tablet (768px), desktop (1280px), or wide (1920px) viewport widths." },
+  { question: "What output formats work?", answer: "JPG for raster images, SVG for vector graphics. JPG is better for sharing, SVG for scaling without quality loss." },
+  { question: "Can I capture a URL?", answer: "Yes, enter a URL to capture a screenshot. Note: Some sites may block automated capture due to CORS restrictions." },
+  { question: "Does it work with external CSS?", answer: "Link to external stylesheets via CDN links in your HTML. Inline CSS works best for guaranteed rendering." },
+];
+---
+
+<ToolLayout
+  toolName={tool.name}
+  toolDescription={tool.longDescription}
+  toolIcon="Code"
+  toolCategory={tool.category}
+  faqItems={faqItems}
+>
+  <HtmlToImage client:load />
+</ToolLayout>

@@ -1,0 +1,52 @@
+---
+import Base from "../layouts/Base.astro";
+---
+
+<Base
+  title="Contact"
+  description="Get in touch with oriz."
+>
+  <section class="py-16 sm:py-20">
+    <div class="container mx-auto px-4 sm:px-6 lg:px-8 max-w-2xl text-center">
+      <h1 class="text-4xl font-extrabold text-[var(--color-text-main)] mb-6">Contact Us</h1>
+      <p class="text-lg text-[var(--color-text-muted)] mb-8">
+        Have questions, feedback, or need support? We'd love to hear from you.
+      </p>
+
+      <div class="bg-[var(--color-surface-2)] rounded-2xl p-8 mb-8">
+        <h2 class="text-xl font-bold text-[var(--color-text-main)] mb-4">General Inquiries</h2>
+        <p class="text-[var(--color-text-muted)] mb-4">
+          For general questions or feedback:
+        </p>
+        <a href="mailto:contact@oriz.in" class="text-[var(--color-primary)] text-lg font-semibold hover:underline">
+          contact@oriz.in
+        </a>
+      </div>
+
+      <div class="bg-[var(--color-surface-2)] rounded-2xl p-8 mb-8">
+        <h2 class="text-xl font-bold text-[var(--color-text-main)] mb-4">Bug Reports & Issues</h2>
+        <p class="text-[var(--color-text-muted)] mb-4">
+          Found a bug or have a feature suggestion?
+        </p>
+        <a 
+          href="https://github.com/chirag127/img-oriz-in/issues" 
+          target="_blank" 
+          rel="noopener noreferrer"
+          class="text-[var(--color-primary)] text-lg font-semibold hover:underline"
+        >
+          Open an Issue on GitHub
+        </a>
+      </div>
+
+      <div class="bg-[var(--color-surface-2)] rounded-2xl p-8">
+        <h2 class="text-xl font-bold text-[var(--color-text-main)] mb-4">Privacy Concerns</h2>
+        <p class="text-[var(--color-text-muted)] mb-4">
+          For privacy-specific inquiries:
+        </p>
+        <a href="mailto:privacy@oriz.in" class="text-[var(--color-primary)] text-lg font-semibold hover:underline">
+          privacy@oriz.in
+        </a>
+      </div>
+    </div>
+  </section>
+</Base>

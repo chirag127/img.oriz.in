@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://pdf.oriz.in/sitemap-index.xml

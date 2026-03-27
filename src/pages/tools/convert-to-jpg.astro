@@ -1,0 +1,25 @@
+---
+import ToolLayout from "../../layouts/ToolLayout.astro";
+import ConvertToJpg from "../../components/tools/ConvertToJpg";
+import { getToolById } from "../../lib/toolMeta";
+
+const tool = getToolById("convert-to-jpg")!;
+
+const faqItems = [
+  { question: "Why convert to JPG?", answer: "JPG is the most widely compatible image format, works everywhere, and produces smaller file sizes than PNG for photos." },
+  { question: "What formats can I convert?", answer: "PNG, GIF, TIF, TIFF, SVG, WEBP, HEIC, and HEIF can all be converted to JPG." },
+  { question: "What about HEIC files?", answer: "HEIC is Apple's high-efficiency format. Our tool uses heic2any to convert them to JPG in your browser." },
+  { question: "Does conversion affect quality?", answer: "JPG uses lossy compression. At quality 85%+, quality loss is minimal. PNG to JPG conversion may slightly change colors." },
+  { question: "Can I batch convert multiple images?", answer: "Yes, upload multiple images and convert them all at once. Download individually or as a ZIP." },
+];
+---
+
+<ToolLayout
+  toolName={tool.name}
+  toolDescription={tool.longDescription}
+  toolIcon="ArrowRightLeft"
+  toolCategory={tool.category}
+  faqItems={faqItems}
+>
+  <ConvertToJpg client:load />
+</ToolLayout>

@@ -1,0 +1,25 @@
+---
+import ToolLayout from "../../layouts/ToolLayout.astro";
+import CompressImage from "../../components/tools/CompressImage";
+import { getToolById } from "../../lib/toolMeta";
+
+const tool = getToolById("compress-image")!;
+
+const faqItems = [
+  { question: "What does compression mean?", answer: "Compression reduces file size by removing unnecessary data. Lossy compression removes some image data (may reduce quality), while lossless keeps all data (larger files but identical quality)." },
+  { question: "Will compression reduce quality?", answer: "Quality depends on the compression level. At 80%+ quality, most people can't see the difference. For web images, 60-80% quality is often acceptable." },
+  { question: "What file formats work?", answer: "JPG, PNG, GIF, and SVG. Each format has different compression behaviors - PNG uses lossless, JPG uses lossy, SVG is optimized via code reduction." },
+  { question: "Can I compress multiple images at once?", answer: "Yes, you can upload up to 20 images and compress them all at once. Download as individual files or as a ZIP archive." },
+  { question: "Is my image data secure?", answer: "Absolutely. All compression happens in your browser - your images are never uploaded to any server." },
+];
+---
+
+<ToolLayout
+  toolName={tool.name}
+  toolDescription={tool.longDescription}
+  toolIcon="Minimize2"
+  toolCategory={tool.category}
+  faqItems={faqItems}
+>
+  <CompressImage client:load />
+</ToolLayout>

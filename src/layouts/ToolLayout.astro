@@ -1,0 +1,226 @@
+---
+import Base from "./Base.astro";
+import { getToolById, getRelatedTools } from "../lib/toolMeta";
+import type { ToolMeta } from "../lib/toolMeta";
+import { 
+  Minimize2, 
+  Maximize2,
+  Crop, 
+  ArrowRightLeft, 
+  ImageIcon, 
+  Paintbrush, 
+  Sparkles, 
+  Eraser, 
+  Droplets, 
+  Laugh, 
+  RotateCw, 
+  Code, 
+  ScanFace,
+  type LucideIcon 
+} from "lucide-react";
+
+interface FAQItem {
+  question: string;
+  answer: string;
+}
+
+interface Props {
+  toolName: string;
+  toolDescription: string;
+  toolIcon: string;
+  toolCategory: string;
+  faqItems: FAQItem[];
+  relatedToolIds?: string[];
+}
+
+const {
+  toolName,
+  toolDescription,
+  toolIcon,
+  toolCategory,
+  faqItems,
+  relatedToolIds = [],
+} = Astro.props;
+
+const relatedTools = (relatedToolIds.length > 0
+  ? relatedToolIds.map((id) => getToolById(id)).filter((t): t is ToolMeta => t !== undefined)
+  : getRelatedTools(toolCategory, 4)
+).slice(0, 4);
+
+const siteUrl = "https://img.oriz.in";
+const canonicalUrl = `/tools/${toolName.toLowerCase().replace(/\s+/g, "-")}/`;
+
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  name: toolName,
+  applicationCategory: "UtilitiesApplication",
+  operatingSystem: "Web Browser",
+  description: toolDescription,
+  url: `${siteUrl}${canonicalUrl}`,
+  offers: {
+    "@type": "Offer",
+    price: "0",
+    priceCurrency: "USD",
+  },
+};
+
+const breadcrumbJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  itemListElement: [
+    {
+      "@type": "ListItem",
+      position: 1,
+      name: "Home",
+      item: siteUrl,
+    },
+    {
+      "@type": "ListItem",
+      position: 2,
+      name: "Tools",
+      item: `${siteUrl}/tools`,
+    },
+    {
+      "@type": "ListItem",
+      position: 3,
+      name: toolName,
+    },
+  ],
+};
+
+const faqJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  mainEntity: faqItems.map((item) => ({
+    "@type": "Question",
+    name: item.question,
+    acceptedAnswer: {
+      "@type": "Answer",
+      text: item.answer,
+    },
+  })),
+};
+
+const iconMap: Record<string, LucideIcon> = {
+  Minimize2,
+  Maximize2,
+  Crop,
+  ArrowRightLeft,
+  ImageIcon,
+  Paintbrush,
+  Sparkles,
+  Eraser,
+  Droplets,
+  Laugh,
+  RotateCw,
+  Code,
+  ScanFace,
+};
+
+function getIconComponent(iconName: string): LucideIcon | null {
+  return iconMap[iconName] || null;
+}
+---
+
+<Base title={toolName} description={toolDescription} canonical={canonicalUrl}>
+  <script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />
+  <script type="application/ld+json" set:html={JSON.stringify(breadcrumbJsonLd)} />
+  <script type="application/ld+json" set:html={JSON.stringify(faqJsonLd)} />
+
+  <div class="container mx-auto px-4 sm:px-6 lg:px-8 py-8">
+    <nav aria-label="Breadcrumb" class="mb-8">
+      <ol class="flex items-center gap-2 text-sm">
+        <li>
+          <a href="/" class="text-[var(--color-text-muted)] hover:text-[var(--color-primary)] transition-colors">
+            Home
+          </a>
+        </li>
+        <li class="text-[var(--color-text-muted)]" aria-hidden="true">/</li>
+        <li>
+          <a href="/tools" class="text-[var(--color-text-muted)] hover:text-[var(--color-primary)] transition-colors">
+            Tools
+          </a>
+        </li>
+        <li class="text-[var(--color-text-muted)]" aria-hidden="true">/</li>
+        <li aria-current="page">
+          <span class="text-[var(--color-text-main)] font-medium">{toolName}</span>
+        </li>
+      </ol>
+    </nav>
+
+    <div class="max-w-4xl">
+      <div class="mb-8">
+        <h1 class="text-3xl sm:text-4xl font-extrabold tracking-tight text-[var(--color-text-main)] mb-4">
+          {toolName}
+        </h1>
+        <p class="text-lg text-[var(--color-text-muted)] leading-relaxed">
+          {toolDescription}
+        </p>
+      </div>
+
+      <slot />
+
+      {
+        faqItems.length > 0 && (
+          <section class="mt-16" aria-labelledby="faq-heading">
+            <h2 id="faq-heading" class="text-2xl font-bold text-[var(--color-text-main)] mb-6">
+              Frequently Asked Questions
+            </h2>
+            <div class="space-y-4">
+              {faqItems.map((item, index) => (
+                <details class="group bg-[var(--color-surface)] border border-[var(--color-border)] rounded-lg overflow-hidden">
+                  <summary class="flex items-center justify-between p-4 cursor-pointer list-none">
+                    <span class="font-semibold text-[var(--color-text-main)] pr-4">
+                      {item.question}
+                    </span>
+                    <svg
+                      class="w-5 h-5 text-[var(--color-text-muted)] transition-transform duration-200 group-open:rotate-180 flex-shrink-0"
+                      fill="none"
+                      stroke="currentColor"
+                      viewBox="0 0 24 24"
+                      aria-hidden="true"
+                    >
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+                    </svg>
+                  </summary>
+                  <div class="px-4 pb-4 text-[var(--color-text-muted)] leading-relaxed">
+                    {item.answer}
+                  </div>
+                </details>
+              ))}
+            </div>
+          </section>
+        )
+      }
+
+      {
+        relatedTools.length > 0 && (
+          <section class="mt-16" aria-labelledby="related-heading">
+            <h2 id="related-heading" class="text-2xl font-bold text-[var(--color-text-main)] mb-6">
+              Related Tools
+            </h2>
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+              {relatedTools.map((tool) => (
+                <a
+                  href={tool.href}
+                  class="tool-card group"
+                >
+                  <div class="flex items-center gap-2 mb-2">
+                    <span class="font-semibold text-[var(--color-text-main)] group-hover:text-[var(--color-primary)] transition-colors">
+                      {tool.name}
+                    </span>
+                    {tool.isNew && <span class="badge-new">NEW</span>}
+                  </div>
+                  <p class="text-sm text-[var(--color-text-muted)]">
+                    {tool.description}
+                  </p>
+                </a>
+              ))}
+            </div>
+          </section>
+        )
+      }
+    </div>
+  </div>
+</Base>

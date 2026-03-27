@@ -1,0 +1,25 @@
+---
+import ToolLayout from "../../layouts/ToolLayout.astro";
+import BlurFace from "../../components/tools/BlurFace";
+import { getToolById } from "../../lib/toolMeta";
+
+const tool = getToolById("blur-face")!;
+
+const faqItems = [
+  { question: "How does face blur work?", answer: "Our AI detects faces in your image using face-api.js, then applies blur or pixelation to each detected face automatically." },
+  { question: "Can I control blur intensity?", answer: "Yes, use the slider to adjust blur radius from 5-50 pixels, or switch to pixelation mode for a mosaic effect." },
+  { question: "What if the AI misses a face?", answer: "The tool shows bounding boxes around detected faces. You can click to deselect faces you want to keep visible." },
+  { question: "Is this private?", answer: "100% private. All face detection and blurring happens on your device - images are never uploaded to any server." },
+  { question: "Can I batch process multiple images?", answer: "Yes, upload multiple images and blur faces in all of them at once. Download individually or as ZIP." },
+];
+---
+
+<ToolLayout
+  toolName={tool.name}
+  toolDescription={tool.longDescription}
+  toolIcon="ScanFace"
+  toolCategory={tool.category}
+  faqItems={faqItems}
+>
+  <BlurFace client:load />
+</ToolLayout>

@@ -1,0 +1,60 @@
+---
+import Base from "../layouts/Base.astro";
+
+const siteUrl = "https://img.oriz.in";
+---
+
+<Base
+  title="About"
+  description="Learn about oriz - free, privacy-first image tools that run entirely in your browser."
+>
+  <section class="py-16 sm:py-20">
+    <div class="container mx-auto px-4 sm:px-6 lg:px-8 max-w-3xl">
+      <h1 class="text-4xl font-extrabold text-[var(--color-text-main)] mb-6">About oriz</h1>
+      
+      <div class="prose prose-lg text-[var(--color-text-muted)]">
+        <p class="mb-4">
+          <strong class="text-[var(--color-text-main)]">oriz</strong> is a collection of free, browser-based image tools built with one mission: make powerful image processing accessible to everyone while respecting your privacy.
+        </p>
+
+        <h2 class="text-2xl font-bold text-[var(--color-text-main)] mt-8 mb-4">Why We Built This</h2>
+        <p class="mb-4">
+          Most online image tools require you to upload your photos to their servers. This means:
+        </p>
+        <ul class="list-disc pl-6 mb-4 space-y-2">
+          <li>Your data leaves your device</li>
+          <li>You trust a company with your personal images</li>
+          <li>Processing can be slow due to upload/download times</li>
+          <li>The service might track you or show ads based on your uploads</li>
+        </ul>
+
+        <h2 class="text-2xl font-bold text-[var(--color-text-main)] mt-8 mb-4">Our Approach</h2>
+        <p class="mb-4">
+          <strong class="text-[var(--color-text-main)]">All processing happens on your device.</strong> Using modern web technologies like WebAssembly and the Canvas API, we can compress, resize, convert, edit, and enhance images entirely in your browser.
+        </p>
+        <p class="mb-4">
+          Your images never travel over the network. This makes oriz:
+        </p>
+        <ul class="list-disc pl-6 mb-4 space-y-2">
+          <li><strong class="text-[var(--color-text-main)]">100% private</strong> - we literally never see your images</li>
+          <li><strong class="text-[var(--color-text-main)]">Lightning fast</strong> - no upload/download wait times</li>
+          <li><strong class="text-[var(--color-text-main)]">Works offline</strong> - use tools even without internet after initial load</li>
+          <li><strong class="text-[var(--color-text-main)]">Free forever</strong> - no servers means minimal hosting costs</li>
+        </ul>
+
+        <h2 class="text-2xl font-bold text-[var(--color-text-main)] mt-8 mb-4">Who Built This</h2>
+        <p class="mb-4">
+          oriz is built and maintained by <strong class="text-[var(--color-text-main)]">Chirag</strong> (chirag127). It started as a personal project to solve common image editing needs without the privacy tradeoffs of existing tools.
+        </p>
+        <p class="mb-4">
+          The project is open source. Find us on <a href="https://github.com/chirag127" class="text-[var(--color-primary)] hover:underline">GitHub</a>.
+        </p>
+
+        <h2 class="text-2xl font-bold text-[var(--color-text-main)] mt-8 mb-4">Technology</h2>
+        <p class="mb-4">
+          Built with Astro, React, and Tailwind CSS. Hosted on Cloudflare Pages for global performance. All image processing uses browser-native APIs and WebAssembly.
+        </p>
+      </div>
+    </div>
+  </section>
+</Base>

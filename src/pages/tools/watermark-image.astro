@@ -1,0 +1,25 @@
+---
+import ToolLayout from "../../layouts/ToolLayout.astro";
+import WatermarkImage from "../../components/tools/WatermarkImage";
+import { getToolById } from "../../lib/toolMeta";
+
+const tool = getToolById("watermark-image")!;
+
+const faqItems = [
+  { question: "What is a watermark?", answer: "A watermark is a semi-transparent overlay (text or logo) added to images to protect copyright or add branding." },
+  { question: "Can I use text watermarks?", answer: "Yes, add text with custom font, size, color, opacity, rotation, and position using the 9-grid or drag on preview." },
+  { question: "How do I add a logo watermark?", answer: "Upload your logo image (PNG with transparency works best), adjust scale and opacity, then position it." },
+  { question: "Can I batch watermark multiple images?", answer: "Yes, upload multiple images and apply the same watermark settings to all. Download individually or as ZIP." },
+  { question: "Where can I position the watermark?", answer: "Use the 9-grid (corners, edges, center) or drag directly on the preview for precise positioning." },
+];
+---
+
+<ToolLayout
+  toolName={tool.name}
+  toolDescription={tool.longDescription}
+  toolIcon="Droplets"
+  toolCategory={tool.category}
+  faqItems={faqItems}
+>
+  <WatermarkImage client:load />
+</ToolLayout>

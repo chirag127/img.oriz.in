@@ -1,0 +1,25 @@
+---
+import ToolLayout from "../../layouts/ToolLayout.astro";
+import RotateImage from "../../components/tools/RotateImage";
+import { getToolById } from "../../lib/toolMeta";
+
+const tool = getToolById("rotate-image")!;
+
+const faqItems = [
+  { question: "How do I rotate an image?", answer: "Choose preset rotations (90 deg left/right, 180 deg) or use the slider for custom angles from -180 to +180 degrees." },
+  { question: "Can I flip an image?", answer: "Yes, flip horizontally or vertically to mirror the image. Useful for correcting orientation or creating effects." },
+  { question: "What is batch rotate?", answer: "Apply the same rotation/flip to all uploaded images. Filter by landscape or portrait orientation if needed." },
+  { question: "Does rotation affect quality?", answer: "No, rotating PNG/JPG is a lossless operation. Rotating GIF may cause frames to be flattened into one." },
+  { question: "Can I rotate multiple images at once?", answer: "Yes, upload multiple images and rotate them all with the same settings. Download individually or as ZIP." },
+];
+---
+
+<ToolLayout
+  toolName={tool.name}
+  toolDescription={tool.longDescription}
+  toolIcon="RotateCw"
+  toolCategory={tool.category}
+  faqItems={faqItems}
+>
+  <RotateImage client:load />
+</ToolLayout>

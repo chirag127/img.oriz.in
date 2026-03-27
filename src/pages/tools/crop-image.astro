@@ -1,0 +1,25 @@
+---
+import ToolLayout from "../../layouts/ToolLayout.astro";
+import CropImage from "../../components/tools/CropImage";
+import { getToolById } from "../../lib/toolMeta";
+
+const tool = getToolById("crop-image")!;
+
+const faqItems = [
+  { question: "What is image cropping?", answer: "Cropping removes unwanted areas from the edges of an image, focusing on the subject or improving composition." },
+  { question: "What aspect ratios are available?", answer: "Freeform (any ratio), 1:1 (square), 16:9 (widescreen), 4:3 (standard), 3:2 (photo), 9:16 (vertical/Instagram stories)." },
+  { question: "Can I see pixel coordinates while cropping?", answer: "Yes, the tool shows real-time pixel coordinates as you drag the crop area, helping you position precisely." },
+  { question: "What formats support cropping?", answer: "JPG, PNG, and GIF formats are fully supported. Animated GIFs will be converted to static for cropping." },
+  { question: "Is cropping destructive?", answer: "No - we work with copies, your original image stays untouched. Download the cropped result as a new file." },
+];
+---
+
+<ToolLayout
+  toolName={tool.name}
+  toolDescription={tool.longDescription}
+  toolIcon="Crop"
+  toolCategory={tool.category}
+  faqItems={faqItems}
+>
+  <CropImage client:load />
+</ToolLayout>

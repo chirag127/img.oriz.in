@@ -1,0 +1,60 @@
+---
+import {
+  Crop,
+  Maximize,
+  Minimize,
+  Image,
+  Scissors,
+  Palette,
+  FileImage,
+  Layers,
+  Droplets,
+  Sparkles,
+  type LucideIcon,
+} from "lucide-react";
+
+interface Props {
+  name: string;
+  description: string;
+  href: string;
+  icon: string;
+  isNew?: boolean;
+}
+
+const { name, description, href, icon, isNew = false } = Astro.props;
+
+const iconMap: Record<string, LucideIcon> = {
+  crop: Crop,
+  resize: Maximize,
+  compress: Minimize,
+  image: Image,
+  cut: Scissors,
+  palette: Palette,
+  fileimage: FileImage,
+  layers: Layers,
+  watermark: Droplets,
+  sparkles: Sparkles,
+};
+
+const IconComponent = iconMap[icon.toLowerCase()] ?? Image;
+---
+
+<a href={href} class="tool-card group">
+  <div class="flex items-start justify-between w-full">
+    <div
+      class="flex items-center justify-center w-10 h-10 rounded-lg bg-[var(--color-primary)]/10 text-[var(--color-primary)] mb-3"
+    >
+      <IconComponent className="w-5 h-5" strokeWidth={1.8} client:load />
+    </div>
+    {isNew && <span class="badge-new">New!</span>}
+  </div>
+  <h3 class="text-base font-bold mb-1">{name}</h3>
+  <p class="text-sm text-[var(--color-text-muted)] mb-3 leading-relaxed">
+    {description}
+  </p>
+  <span
+    class="text-sm font-semibold text-[var(--color-primary)] group-hover:text-[var(--color-primary-hover)] transition-colors duration-[var(--transition-base)]"
+  >
+    Try Now &rarr;
+  </span>
+</a>

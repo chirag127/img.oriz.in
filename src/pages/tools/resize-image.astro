@@ -1,0 +1,25 @@
+---
+import ToolLayout from "../../layouts/ToolLayout.astro";
+import ResizeImage from "../../components/tools/ResizeImage";
+import { getToolById } from "../../lib/toolMeta";
+
+const tool = getToolById("resize-image")!;
+
+const faqItems = [
+  { question: "What is image resizing?", answer: "Resizing changes the pixel dimensions of an image. You can specify exact pixels (e.g., 800x600) or use percentage (e.g., 50%)." },
+  { question: "How do I maintain aspect ratio?", answer: "Enable 'Maintain aspect ratio' to automatically calculate height when you change width, or vice versa. This prevents distortion." },
+  { question: "What are social media presets?", answer: "Presets are common image sizes optimized for platforms: Facebook cover (1200x630), Instagram square (1080x1080), YouTube thumbnail (1280x720), etc." },
+  { question: "Does resizing affect quality?", answer: "Upscaling (making larger) may reduce quality. Downscaling (making smaller) usually maintains quality but reduces file size." },
+  { question: "Can I batch resize multiple images?", answer: "Yes, upload multiple images and apply the same dimensions to all of them at once." },
+];
+---
+
+<ToolLayout
+  toolName={tool.name}
+  toolDescription={tool.longDescription}
+  toolIcon="Maximize2"
+  toolCategory={tool.category}
+  faqItems={faqItems}
+>
+  <ResizeImage client:load />
+</ToolLayout>

@@ -1,0 +1,110 @@
+---
+import { tools, getToolsByCategory, categoryLabels } from "../../lib/toolMeta";
+
+const imageTools = getToolsByCategory("image");
+const convertTools = getToolsByCategory("convert");
+const editTools = getToolsByCategory("edit");
+const aiTools = getToolsByCategory("ai");
+
+const currentYear = new Date().getFullYear();
+---
+
+<footer class="bg-[var(--color-surface-2)] border-t border-[var(--color-border)] mt-auto">
+  <div class="container mx-auto px-4 sm:px-6 lg:px-8 py-12">
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-12">
+      <div class="lg:col-span-1">
+        <a href="/" class="inline-flex items-center gap-2 group" aria-label="oriz home">
+          <span class="text-2xl font-extrabold tracking-tight font-[var(--font-display)] text-[var(--color-primary)]">
+            oriz
+          </span>
+        </a>
+        <p class="mt-4 text-sm text-[var(--color-text-muted)] leading-relaxed">
+          Free online image tools. 100% client-side, zero uploads, privacy-first.
+        </p>
+      </div>
+
+      <div>
+        <h3 class="font-semibold text-[var(--color-text-main)] mb-4">
+          {categoryLabels.image}
+        </h3>
+        <ul class="space-y-2">
+          {
+            imageTools.map((tool) => (
+              <li>
+                <a
+                  href={tool.href}
+                  class="text-sm text-[var(--color-text-muted)] hover:text-[var(--color-primary)] transition-colors"
+                >
+                  {tool.name}
+                </a>
+              </li>
+            ))
+          }
+        </ul>
+      </div>
+
+      <div>
+        <h3 class="font-semibold text-[var(--color-text-main)] mb-4">
+          {categoryLabels.convert} &amp; {categoryLabels.edit}
+        </h3>
+        <ul class="space-y-2">
+          {
+            convertTools.map((tool) => (
+              <li>
+                <a
+                  href={tool.href}
+                  class="text-sm text-[var(--color-text-muted)] hover:text-[var(--color-primary)] transition-colors"
+                >
+                  {tool.name}
+                </a>
+              </li>
+            ))
+          }
+          {
+            editTools.map((tool) => (
+              <li>
+                <a
+                  href={tool.href}
+                  class="text-sm text-[var(--color-text-muted)] hover:text-[var(--color-primary)] transition-colors"
+                >
+                  {tool.name}
+                </a>
+              </li>
+            ))
+          }
+        </ul>
+      </div>
+
+      <div>
+        <h3 class="font-semibold text-[var(--color-text-main)] mb-4">
+          {categoryLabels.ai}
+        </h3>
+        <ul class="space-y-2">
+          {
+            aiTools.map((tool) => (
+              <li>
+                <a
+                  href={tool.href}
+                  class="text-sm text-[var(--color-text-muted)] hover:text-[var(--color-primary)] transition-colors"
+                >
+                  {tool.name}
+                </a>
+              </li>
+            ))
+          }
+        </ul>
+      </div>
+    </div>
+
+    <div class="mt-12 pt-8 border-t border-[var(--color-border)]">
+      <div class="flex flex-col sm:flex-row items-center justify-between gap-4">
+        <p class="text-sm text-[var(--color-text-muted)]">
+          &copy; {currentYear} oriz. All rights reserved.
+        </p>
+        <p class="text-sm text-[var(--color-text-muted)]">
+          Tools run entirely in your browser. Your images never leave your device.
+        </p>
+      </div>
+    </div>
+  </div>
+</footer>

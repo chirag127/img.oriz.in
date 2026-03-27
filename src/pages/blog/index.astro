@@ -1,0 +1,45 @@
+---
+import Base from "../../layouts/Base.astro";
+
+const posts = [
+  { slug: "compress-images-guide", title: "How to Compress Images Without Losing Quality", excerpt: "Learn the difference between lossy and lossless compression, when to use each, and tips for maintaining quality while reducing file size.", date: "March 27, 2026", readTime: "6 min read" },
+  { slug: "best-image-resizers-2026", title: "Best Free Online Image Resizers in 2026", excerpt: "Discover the best free tools for resizing images for web, social media, and print. Compare features, quality, and batch processing options.", date: "March 27, 2026", readTime: "5 min read" },
+  { slug: "remove-background-free", title: "How to Remove Image Backgrounds for Free", excerpt: "A complete guide to removing backgrounds from images online. Learn how AI-powered tools work and which methods give the best results.", date: "March 27, 2026", readTime: "5 min read" },
+  { slug: "heic-to-jpg-guide", title: "Convert HEIC to JPG Online: Step-by-Step Guide", excerpt: "What is HEIC and why you might need to convert to JPG. Learn how to convert Apple HEIC photos to universally compatible JPEG format.", date: "March 27, 2026", readTime: "4 min read" },
+  { slug: "image-upscaling-explained", title: "What is Image Upscaling? AI Explained Simply", excerpt: "Understand how AI upscaling works, the difference between traditional and neural upscaling, and when to use each method.", date: "March 27, 2026", readTime: "5 min read" },
+];
+---
+
+<Base title="Image Tools Blog" description="Tutorials, guides, and tips for image processing. Learn how to compress, resize, convert, and edit images like a pro.">
+  <section class="py-16 sm:py-20">
+    <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="max-w-3xl mx-auto text-center mb-12">
+        <h1 class="text-4xl font-extrabold text-[var(--color-text-main)] mb-4">Image Tools Blog</h1>
+        <p class="text-lg text-[var(--color-text-muted)]">
+          Tutorials, guides, and tips for getting the most out of your images.
+        </p>
+      </div>
+
+      <div class="max-w-3xl mx-auto space-y-8">
+        {posts.map((post) => (
+          <article class="bg-[var(--color-surface)] border border-[var(--color-border)] rounded-xl p-6 hover:shadow-[var(--shadow-card-hover)] transition-shadow">
+            <div class="flex items-center gap-3 text-sm text-[var(--color-text-muted)] mb-3">
+              <time>{post.date}</time>
+              <span aria-hidden="true">|</span>
+              <span>{post.readTime}</span>
+            </div>
+            <h2 class="text-xl font-bold text-[var(--color-text-main)] mb-3">
+              <a href={`/blog/${post.slug}`} class="hover:text-[var(--color-primary)] transition-colors">
+                {post.title}
+              </a>
+            </h2>
+            <p class="text-[var(--color-text-muted)] mb-4">{post.excerpt}</p>
+            <a href={`/blog/${post.slug}`} class="text-[var(--color-primary)] font-medium hover:underline">
+              Read more
+            </a>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+</Base>

@@ -1,0 +1,25 @@
+---
+import ToolLayout from "../../layouts/ToolLayout.astro";
+import PhotoEditor from "../../components/tools/PhotoEditor";
+import { getToolById } from "../../lib/toolMeta";
+
+const tool = getToolById("photo-editor")!;
+
+const faqItems = [
+  { question: "What can I do with the photo editor?", answer: "Add text with custom fonts, apply effects (grayscale, sepia, blur), adjust brightness/contrast, add stickers and frames, with full undo/redo." },
+  { question: "How do I add text?", answer: "Click 'Add Text', choose font, size, color, and style. Drag to position. Edit text by clicking on it." },
+  { question: "What effects are available?", answer: "Grayscale (black & white), Sepia (vintage), Blur (soft focus), Brightness, Contrast, and Saturation adjustments." },
+  { question: "Can I undo changes?", answer: "Yes, unlimited undo/redo (up to 20 steps) using the toolbar buttons or Ctrl+Z / Ctrl+Shift+Z." },
+  { question: "What formats can I export?", answer: "Export as PNG (with transparency) or JPG. PNG preserves all edits, JPG produces smaller files." },
+];
+---
+
+<ToolLayout
+  toolName={tool.name}
+  toolDescription={tool.longDescription}
+  toolIcon="Paintbrush"
+  toolCategory={tool.category}
+  faqItems={faqItems}
+>
+  <PhotoEditor client:load />
+</ToolLayout>

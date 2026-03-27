@@ -1,0 +1,45 @@
+---
+interface Props {
+  slot: "leaderboard" | "rectangle" | "mobile";
+}
+
+const { slot } = Astro.props;
+
+const dimensions: Record<string, { width: number; height: number }> = {
+  leaderboard: { width: 728, height: 90 },
+  rectangle: { width: 300, height: 250 },
+  mobile: { width: 320, height: 50 },
+};
+
+const { width, height } = dimensions[slot];
+---
+
+<div class="ad-container" style={`max-width: ${width}px;`}>
+  <span class="ad-label">Advertisement</span>
+  <div
+    class="ad-placeholder"
+    style={`width: 100%; max-width: ${width}px; height: ${height}px;`}
+    data-slot={slot}
+  >
+  </div>
+  <script type="text/partytown" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-XXXXXXXXXXXXXXXX" crossorigin="anonymous"></script>
+</div>
+
+<style>
+  .ad-container {
+    margin: 1.5rem auto;
+    text-align: center;
+  }
+
+  .ad-placeholder {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto;
+    border: 1px dashed var(--color-border);
+    border-radius: 8px;
+    background-color: var(--color-surface-2);
+    font-size: 0.75rem;
+    color: var(--color-text-muted);
+  }
+</style>

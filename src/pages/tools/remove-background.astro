@@ -1,0 +1,25 @@
+---
+import ToolLayout from "../../layouts/ToolLayout.astro";
+import RemoveBackground from "../../components/tools/RemoveBackground";
+import { getToolById } from "../../lib/toolMeta";
+
+const tool = getToolById("remove-background")!;
+
+const faqItems = [
+  { question: "How does background removal work?", answer: "Our AI uses deep learning to detect the subject and create a transparent mask. The result is a PNG with alpha transparency." },
+  { question: "What file types work best?", answer: "JPG and PNG work best. Use images with clear subject-background contrast for optimal results." },
+  { question: "Is there a file size limit?", answer: "Images up to 10MB work best. Larger files may take longer to process." },
+  { question: "Can I add a colored background?", answer: "Yes, after removing the background, you can choose a solid color fill or keep it transparent." },
+  { question: "Is this really private?", answer: "100% private. All processing happens in your browser - your images are never uploaded to any server." },
+];
+---
+
+<ToolLayout
+  toolName={tool.name}
+  toolDescription={tool.longDescription}
+  toolIcon="Eraser"
+  toolCategory={tool.category}
+  faqItems={faqItems}
+>
+  <RemoveBackground client:load />
+</ToolLayout>

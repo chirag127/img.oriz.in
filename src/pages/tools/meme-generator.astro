@@ -1,0 +1,25 @@
+---
+import ToolLayout from "../../layouts/ToolLayout.astro";
+import MemeGenerator from "../../components/tools/MemeGenerator";
+import { getToolById } from "../../lib/toolMeta";
+
+const tool = getToolById("meme-generator")!;
+
+const faqItems = [
+  { question: "How do I create a meme?", answer: "Choose a template or upload your own image, add top and bottom text using Impact font, customize style, and download as PNG." },
+  { question: "What templates are available?", answer: "We have 50+ popular meme templates. Browse the gallery or search to find the perfect one." },
+  { question: "Can I use my own image?", answer: "Yes, click 'Upload Custom' to add your own image for meme creation." },
+  { question: "What fonts work for memes?", answer: "Impact is the classic meme font (white with black outline). Arial Black is an alternative. Customize size and color." },
+  { question: "Can I adjust text styling?", answer: "Yes, adjust font size, color, and outline (stroke) width to make text stand out against any background." },
+];
+---
+
+<ToolLayout
+  toolName={tool.name}
+  toolDescription={tool.longDescription}
+  toolIcon="Laugh"
+  toolCategory={tool.category}
+  faqItems={faqItems}
+>
+  <MemeGenerator client:load />
+</ToolLayout>

@@ -1,0 +1,14 @@
+node_modules/
+dist/
+.wrangler/
+*.log
+.env
+.env.local
+coverage/
+playwright-report/
+test-results/
+*.d.ts
+!src/env.d.ts
+pnpm-lock.yaml
+.DS_Store
+Thumbs.db

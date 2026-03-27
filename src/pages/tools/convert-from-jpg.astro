@@ -1,0 +1,25 @@
+---
+import ToolLayout from "../../layouts/ToolLayout.astro";
+import ConvertFromJpg from "../../components/tools/ConvertFromJpg";
+import { getToolById } from "../../lib/toolMeta";
+
+const tool = getToolById("convert-from-jpg")!;
+
+const faqItems = [
+  { question: "Why convert from JPG to PNG?", answer: "PNG offers lossless compression (no quality loss), supports transparency, and is better for graphics with text or sharp edges." },
+  { question: "How do I create an animated GIF?", answer: "Upload multiple JPG images (2-20), reorder them by drag-and-drop, set frame delay, and click Convert to create an animated GIF." },
+  { question: "What is the frame delay?", answer: "Frame delay sets how long each image displays in the animated GIF, from 50ms (fast) to 500ms (slow)." },
+  { question: "How many images for an animated GIF?", answer: "Use 2-20 images for best results. More frames = larger file size. Keep images consistent in dimensions." },
+  { question: "Can I convert multiple JPGs at once?", answer: "Yes, upload multiple JPGs and convert each to PNG individually or combine into an animated GIF." },
+];
+---
+
+<ToolLayout
+  toolName={tool.name}
+  toolDescription={tool.longDescription}
+  toolIcon="ImageIcon"
+  toolCategory={tool.category}
+  faqItems={faqItems}
+>
+  <ConvertFromJpg client:load />
+</ToolLayout>

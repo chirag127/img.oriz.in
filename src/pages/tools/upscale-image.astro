@@ -1,0 +1,25 @@
+---
+import ToolLayout from "../../layouts/ToolLayout.astro";
+import UpscaleImage from "../../components/tools/UpscaleImage";
+import { getToolById } from "../../lib/toolMeta";
+
+const tool = getToolById("upscale-image")!;
+
+const faqItems = [
+  { question: "What is AI upscaling?", answer: "Upscaling increases image resolution using AI to add detail. 2x doubles dimensions, 4x quadruples them (e.g., 500x500 becomes 1000x1000 or 2000x2000)." },
+  { question: "What's the maximum input size?", answer: "Images up to 1024x1024 pixels work best. Larger images will be resized before upscaling to ensure browser performance." },
+  { question: "Is processing really in my browser?", answer: "Yes, all AI processing happens on your device using WebAssembly. Your images never leave your browser." },
+  { question: "How long does upscaling take?", answer: "Processing time depends on image size and your device. 2x typically takes 5-15 seconds, 4x takes 15-30 seconds." },
+  { question: "Does 4x always look better?", answer: "Not always. 4x creates larger files and may add artifacts on complex images. 2x is safer for web use, 4x for print-quality needs." },
+];
+---
+
+<ToolLayout
+  toolName={tool.name}
+  toolDescription={tool.longDescription}
+  toolIcon="Sparkles"
+  toolCategory={tool.category}
+  faqItems={faqItems}
+>
+  <UpscaleImage client:load />
+</ToolLayout>
