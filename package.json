@@ -1,9 +1,9 @@
 {
-  "name": "pdf-oriz-in",
+  "name": "img-oriz-in",
   "type": "module",
   "version": "1.0.0",
   "private": true,
-  "description": "Free online image & PDF tools — 100% client-side, zero uploads, privacy-first",
+  "description": "Free online image tools — 100% client-side, zero uploads, privacy-first",
   "scripts": {
     "dev": "astro dev",
     "build": "astro build",

@@ -1,5 +1,4 @@
 import { defineConfig } from "astro/config";
-import cloudflare from "@astrojs/cloudflare";
 import react from "@astrojs/react";
 import partytown from "@astrojs/partytown";
 import sitemap from "@astrojs/sitemap";
@@ -7,10 +6,7 @@ import tailwindcss from "@tailwindcss/vite";
 
 export default defineConfig({
   output: "static",
-  site: "https://pdf.oriz.in",
-  adapter: cloudflare({
-    imageService: "passthrough",
-  }),
+  site: "https://img.oriz.in",
   integrations: [
     react(),
     partytown({
@@ -24,9 +20,6 @@ export default defineConfig({
     plugins: [tailwindcss()],
     build: {
       assetsInlineLimit: 0,
-    },
-    ssr: {
-      noExternal: ["svgo"],
     },
   },
   build: {

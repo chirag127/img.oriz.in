@@ -6,7 +6,7 @@
 <h1 align="center">oriz - Free Online Image Tools</h1>
 
 <p align="center">
-  <a href="https://pdf.oriz.in"><strong>Live Site</strong></a> |
+  <a href="https://img.oriz.in"><strong>Live Site</strong></a> |
   <a href="https://github.com/chirag127/img.oriz-in/actions/workflows/ci.yml"><img src="https://github.com/chirag127/img.oriz-in/actions/workflows/ci.yml/badge.svg" alt="CI Status" /></a> |
   <a href="https://github.com/chirag127/img.oriz-in/blob/main/LICENSE"><img src="https://img.shields.io/github/license/chirag127/img.oriz-in" alt="License" /></a>
 </p>
@@ -18,25 +18,25 @@
 All image processing happens client-side using WebAssembly and browser APIs - no server uploads required.
 
 ### Image Editing
-- [Compress Image](https://pdf.oriz.in/tools/compress-image/) - Reduce file size without quality loss
-- [Resize Image](https://pdf.oriz.in/tools/resize-image/) - Change dimensions by pixels or percentage
-- [Crop Image](https://pdf.oriz.in/tools/crop-image/) - Visual drag-to-crop editor
-- [Rotate Image](https://pdf.oriz.in/tools/rotate-image/) - Rotate, flip, and batch-orient
-- [Watermark Image](https://pdf.oriz.in/tools/watermark-image/) - Add text or image watermarks
+- [Compress Image](https://img.oriz.in/tools/compress-image/) - Reduce file size without quality loss
+- [Resize Image](https://img.oriz.in/tools/resize-image/) - Change dimensions by pixels or percentage
+- [Crop Image](https://img.oriz.in/tools/crop-image/) - Visual drag-to-crop editor
+- [Rotate Image](https://img.oriz.in/tools/rotate-image/) - Rotate, flip, and batch-orient
+- [Watermark Image](https://img.oriz.in/tools/watermark-image/) - Add text or image watermarks
 
 ### Convert
-- [Convert to JPG](https://pdf.oriz.in/tools/convert-to-jpg/) - PNG, GIF, WEBP, HEIC to JPG
-- [Convert from JPG](https://pdf.oriz.in/tools/convert-from-jpg/) - JPG to PNG or animated GIF
-- [HTML to Image](https://pdf.oriz.in/tools/html-to-image/) - Convert HTML/CSS to JPG or SVG
+- [Convert to JPG](https://img.oriz.in/tools/convert-to-jpg/) - PNG, GIF, WEBP, HEIC to JPG
+- [Convert from JPG](https://img.oriz.in/tools/convert-from-jpg/) - JPG to PNG or animated GIF
+- [HTML to Image](https://img.oriz.in/tools/html-to-image/) - Convert HTML/CSS to JPG or SVG
 
 ### Edit & Create
-- [Photo Editor](https://pdf.oriz.in/tools/photo-editor/) - Text, effects, frames, stickers
-- [Meme Generator](https://pdf.oriz.in/tools/meme-generator/) - 50+ templates + custom upload
+- [Photo Editor](https://img.oriz.in/tools/photo-editor/) - Text, effects, frames, stickers
+- [Meme Generator](https://img.oriz.in/tools/meme-generator/) - 50+ templates + custom upload
 
 ### AI Tools
-- [Upscale Image](https://pdf.oriz.in/tools/upscale-image/) - AI-powered 2x/4x enlargement
-- [Remove Background](https://pdf.oriz.in/tools/remove-background/) - Automatic background removal
-- [Blur Face](https://pdf.oriz.in/tools/blur-face/) - Privacy protection with face detection
+- [Upscale Image](https://img.oriz.in/tools/upscale-image/) - AI-powered 2x/4x enlargement
+- [Remove Background](https://img.oriz.in/tools/remove-background/) - Automatic background removal
+- [Blur Face](https://img.oriz.in/tools/blur-face/) - Privacy protection with face detection
 
 ## Tech Stack
 
@@ -71,8 +71,8 @@ All image processing happens client-side using WebAssembly and browser APIs - no
 
 ```bash
 # Clone the repository
-git clone https://github.com/chirag127/img.oriz-in.git
-cd img.oriz-in
+git clone https://github.com/chirag127/img.oriz.in.git
+cd img.oriz.in
 
 # Install dependencies
 pnpm install
@@ -122,12 +122,12 @@ wrangler pages deploy dist --project-name=pdf-oriz-in
 
 ### Custom Domain
 
-1. Add CNAME record in Cloudflare DNS: `pdf` -> `pdf-oriz-in.pages.dev`
-2. In Cloudflare Pages: Add custom domain `pdf.oriz.in`
+1. Add CNAME record in Cloudflare DNS: `img` -> `pdf-oriz-in.pages.dev`
+2. In Cloudflare Pages: Add custom domain `img.oriz.in`
 
 ## Privacy
 
-All image processing happens 100% client-side. We never upload your images to any server. See [Privacy Policy](https://pdf.oriz.in/privacy/).
+All image processing happens 100% client-side. We never upload your images to any server. See [Privacy Policy](https://img.oriz.in/privacy/).
 
 ## Contributing
 

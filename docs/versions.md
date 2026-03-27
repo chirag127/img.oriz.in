@@ -5,7 +5,7 @@ A fully static, zero-hosting-cost, Google AdSense-ready image processing web app
 ## Project Structure
 
 ```
-pdf-oriz-in/
+img-oriz-in/
 ├── .github/workflows/     # CI/CD pipelines
 ├── public/               # Static assets
 ├── src/
