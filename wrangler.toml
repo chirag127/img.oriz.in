@@ -1,3 +1,11 @@
 name = "pdf-oriz-in"
-compatibility_date = "2026-03-27"
+compatibility_date = "2026-03-17"
 pages_build_output_dir = "dist"
+
+[env.production]
+name = "pdf-oriz-in"
+pages_build_output_dir = "dist"
+
+[[env.production.routes]]
+pattern = "pdf.oriz.in"
+zone_name = "oriz.in"

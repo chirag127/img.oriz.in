@@ -2,7 +2,6 @@
 
 import { useCallback, useState } from "react";
 import imageCompression from "browser-image-compression";
-import { optimize } from "svgo";
 import { Settings, Image as ImageIcon } from "lucide-react";
 import DropZone from "../ui/DropZone";
 import Slider from "../ui/Slider";
@@ -41,45 +40,30 @@ export default function CompressImage() {
         const file = files[i];
         const ext = file.name.split(".").pop()?.toLowerCase() ?? "";
 
-        if (ext === "svg" || file.type === "image/svg+xml") {
-          const text = await file.text();
-          const result = optimize(text, {
-            multipass: true,
-            plugins: [
-              {
-                name: "preset-default",
-                params: { overrides: { removeViewBox: false } },
-              },
-            ],
-          });
-          const blob = new Blob([result.data], { type: "image/svg+xml" });
-          processed.push({ name: file.name, blob, originalSize: file.size });
+        const opts: Record<string, unknown> = {
+          maxSizeMB: 50,
+          useWebWorker: true,
+          fileType: file.type || "image/jpeg",
+        };
+        if (lossless && (ext === "png" || file.type === "image/png")) {
+          opts.fileType = "image/png";
+          opts.initialQuality = quality / 100;
         } else {
-          const opts: Record<string, unknown> = {
-            maxSizeMB: 50,
-            useWebWorker: true,
-            fileType: file.type || "image/jpeg",
-          };
-          if (lossless && (ext === "png" || file.type === "image/png")) {
-            opts.fileType = "image/png";
-            opts.initialQuality = quality / 100;
-          } else {
-            opts.initialQuality = quality / 100;
-          }
-          if (maxWidth > 0) opts.maxWidthOrHeight = maxWidth;
-          if (maxHeight > 0) {
-            opts.maxWidthOrHeight = Math.max(maxWidth || 0, maxHeight);
-          }
-          const compressed = await imageCompression(
-            file,
-            opts as imageCompression.Options,
-          );
-          processed.push({
-            name: file.name,
-            blob: compressed,
-            originalSize: file.size,
-          });
+          opts.initialQuality = quality / 100;
         }
+        if (maxWidth > 0) opts.maxWidthOrHeight = maxWidth;
+        if (maxHeight > 0) {
+          opts.maxWidthOrHeight = Math.max(maxWidth || 0, maxHeight);
+        }
+        const compressed = await imageCompression(
+          file,
+          opts as imageCompression.Options,
+        );
+        processed.push({
+          name: file.name,
+          blob: compressed,
+          originalSize: file.size,
+        });
 
         setProgress(Math.round(((i + 1) / files.length) * 100));
       }

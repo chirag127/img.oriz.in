@@ -35,7 +35,6 @@
     "react-image-crop": "^11.0.10",
     "gif.js": "^0.2.0",
     "heic2any": "^0.0.4",
-    "svgo": "^4.0.1",
     "@imgly/background-removal": "^1.7.0",
     "face-api.js": "^0.22.2",
     "html2canvas": "^1.4.1"

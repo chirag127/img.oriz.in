@@ -1,6 +1,6 @@
 ---
 import Base from "../layouts/Base.astro";
-import { tools, categoryLabels } from "../lib/toolMeta";
+import { tools } from "../../lib/toolMeta";
 import { Minimize2, Maximize2, Crop, ArrowRightLeft, ImageIcon, Paintbrush, Sparkles, Eraser, Droplets, Laugh, RotateCw, Code, ScanFace } from "lucide-react";
 
 const iconMap: Record<string, any> = {
@@ -10,26 +10,25 @@ const iconMap: Record<string, any> = {
 function getIconComponent(iconName: string) {
   return iconMap[iconName] || null;
 }
-
-const categories = [...new Set(tools.map(t => t.category))];
 ---
 
-<Base title="Free Online Image Tools" description="16 powerful image tools. All run in your browser. Your images never leave your device.">
-  <section class="relative overflow-hidden bg-gradient-to-b from-[var(--color-surface)] to-[var(--color-surface-2)] py-20 sm:py-28">
+<Base title="Free Online Image Tools | oriz" description="Compress, resize, crop, convert, and edit images - all in your browser. 100% private, no uploads.">
+  <!-- Hero Section -->
+  <section class="py-20 sm:py-28 bg-white">
     <div class="container mx-auto px-4 sm:px-6 lg:px-8">
       <div class="max-w-3xl mx-auto text-center">
-        <h1 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight text-[var(--color-text-main)] mb-6">
-          Free Online Image Tools
-          <span class="block text-gradient mt-2">No Upload, No Wait</span>
+        <h1 class="text-4xl sm:text-5xl lg:text-6xl font-bold text-gray-900 mb-6 tracking-tight">
+          Free Online<br/>Image Tools
         </h1>
-        <p class="text-lg sm:text-xl text-[var(--color-text-muted)] mb-8 max-w-2xl mx-auto">
-          16 powerful tools. All run in your browser. Your images never leave your device.
+        <p class="text-xl text-gray-600 mb-10 max-w-xl mx-auto">
+          Compress, resize, crop, convert, and edit images. 
+          All processing happens in your browser - your images never leave your device.
         </p>
         <div class="flex flex-col sm:flex-row gap-4 justify-center">
-          <a href="#tools" class="btn-primary">
-            Explore Tools
+          <a href="#tools" class="btn-primary text-base px-8 py-3">
+            Browse Tools
           </a>
-          <a href="/tools" class="btn-secondary">
+          <a href="/tools" class="btn-secondary text-base px-8 py-3">
             All Tools
           </a>
         </div>
@@ -37,60 +36,65 @@ const categories = [...new Set(tools.map(t => t.category))];
     </div>
   </section>
 
-  <section class="py-12 bg-[var(--color-surface-2)]">
+  <!-- Features Bar -->
+  <section class="py-10 bg-gray-50 border-y border-gray-200">
     <div class="container mx-auto px-4 sm:px-6 lg:px-8">
       <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
         <div class="flex flex-col items-center text-center">
-          <div class="w-12 h-12 rounded-full bg-[var(--color-primary)]/10 flex items-center justify-center mb-3">
-            <svg class="w-6 h-6 text-[var(--color-primary)]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"/></svg>
+          <div class="w-12 h-12 rounded-full bg-blue-100 flex items-center justify-center mb-3">
+            <svg class="w-6 h-6 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"/></svg>
           </div>
-          <span class="font-semibold text-[var(--color-text-main)]">100% Private</span>
-          <span class="text-sm text-[var(--color-text-muted)]">All processing in browser</span>
+          <span class="font-semibold text-gray-900">100% Private</span>
+          <span class="text-sm text-gray-500">Browser-only</span>
         </div>
         <div class="flex flex-col items-center text-center">
-          <div class="w-12 h-12 rounded-full bg-[var(--color-primary)]/10 flex items-center justify-center mb-3">
-            <svg class="w-6 h-6 text-[var(--color-primary)]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"/></svg>
+          <div class="w-12 h-12 rounded-full bg-blue-100 flex items-center justify-center mb-3">
+            <svg class="w-6 h-6 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"/></svg>
           </div>
-          <span class="font-semibold text-[var(--color-text-main)]">No Account</span>
-          <span class="text-sm text-[var(--color-text-muted)]">Use instantly</span>
+          <span class="font-semibold text-gray-900">No Sign Up</span>
+          <span class="text-sm text-gray-500">Use instantly</span>
         </div>
         <div class="flex flex-col items-center text-center">
-          <div class="w-12 h-12 rounded-full bg-[var(--color-primary)]/10 flex items-center justify-center mb-3">
-            <svg class="w-6 h-6 text-[var(--color-primary)]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M18.364 5.636a9 9 0 010 12.728m0 0l-2.829-2.829m2.829 2.829L21 21M15.536 8.464a5 5 0 010 7.072m0 0l-2.829-2.829m-4.243 2.829a4 4 0 01-1.414-2.83m-1.414 5.658a9 9 0 01-2.167-9.238m7.824 2.167a1 1 0 111.414 1.414m-1.414-1.414L3 3m8.293 8.293l1.414 1.414"/></svg>
+          <div class="w-12 h-12 rounded-full bg-blue-100 flex items-center justify-center mb-3">
+            <svg class="w-6 h-6 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>
           </div>
-          <span class="font-semibold text-[var(--color-text-main)]">Works Offline</span>
-          <span class="text-sm text-[var(--color-text-muted)]">No internet needed</span>
+          <span class="font-semibold text-gray-900">Lightning Fast</span>
+          <span class="text-sm text-gray-500">No uploads</span>
         </div>
         <div class="flex flex-col items-center text-center">
-          <div class="w-12 h-12 rounded-full bg-[var(--color-primary)]/10 flex items-center justify-center mb-3">
-            <svg class="w-6 h-6 text-[var(--color-primary)]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+          <div class="w-12 h-12 rounded-full bg-blue-100 flex items-center justify-center mb-3">
+            <svg class="w-6 h-6 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
           </div>
-          <span class="font-semibold text-[var(--color-text-main)]">Free Forever</span>
-          <span class="text-sm text-[var(--color-text-muted)]">No hidden costs</span>
+          <span class="font-semibold text-gray-900">Free Forever</span>
+          <span class="text-sm text-gray-500">No hidden costs</span>
         </div>
       </div>
     </div>
   </section>
 
-  <section id="tools" class="py-16 sm:py-20">
+  <!-- Tools Grid -->
+  <section id="tools" class="py-16 sm:py-20 bg-white">
     <div class="container mx-auto px-4 sm:px-6 lg:px-8">
-      <h2 class="text-3xl font-bold text-[var(--color-text-main)] mb-8 text-center">All Image Tools</h2>
-      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+      <h2 class="text-3xl font-bold text-gray-900 mb-4 text-center">All Image Tools</h2>
+      <p class="text-gray-600 text-center mb-12 max-w-2xl mx-auto">
+        Choose a tool to get started. All tools process your images locally in your browser.
+      </p>
+      
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-5">
         {tools.map((tool) => {
           const IconComponent = getIconComponent(tool.icon.name);
           return (
-            <a href={tool.href} class="tool-card group">
+            <a href={tool.href} class="tool-card group h-full">
               <div class="flex items-center gap-3 mb-3">
-                {IconComponent && <IconComponent class="w-8 h-8 text-[var(--color-primary)]" />}
-                <h3 class="text-lg font-bold text-[var(--color-text-main)] group-hover:text-[var(--color-primary)] transition-colors">
+                <div class="w-10 h-10 rounded-lg bg-gray-100 flex items-center justify-center group-hover:bg-blue-50 transition-colors">
+                  {IconComponent && <IconComponent class="w-5 h-5 text-gray-700 group-hover:text-blue-600 transition-colors" />}
+                </div>
+                <h3 class="text-base font-semibold text-gray-900">
                   {tool.name}
                 </h3>
                 {tool.isNew && <span class="badge-new">NEW</span>}
               </div>
-              <p class="text-sm text-[var(--color-text-muted)]">{tool.description}</p>
-              <span class="inline-flex items-center gap-1 mt-4 text-sm font-medium text-[var(--color-primary)]">
-                Try Now <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
-              </span>
+              <p class="text-sm text-gray-500">{tool.description}</p>
             </a>
           );
         })}
@@ -98,101 +102,87 @@ const categories = [...new Set(tools.map(t => t.category))];
     </div>
   </section>
 
-  <section class="py-16 bg-[var(--color-surface-2)]">
+  <!-- How It Works -->
+  <section class="py-16 bg-gray-50 border-t border-gray-200">
     <div class="container mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="max-w-3xl mx-auto text-center">
-        <h2 class="text-3xl font-bold text-[var(--color-text-main)] mb-6">How It Works</h2>
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-          <div class="flex flex-col items-center">
-            <div class="w-16 h-16 rounded-full bg-[var(--color-primary)] text-white flex items-center justify-center text-2xl font-bold mb-4">1</div>
-            <h3 class="font-bold text-[var(--color-text-main)] mb-2">Upload</h3>
-            <p class="text-[var(--color-text-muted)] text-sm">Drop your images or click to browse</p>
-          </div>
-          <div class="flex flex-col items-center">
-            <div class="w-16 h-16 rounded-full bg-[var(--color-primary)] text-white flex items-center justify-center text-2xl font-bold mb-4">2</div>
-            <h3 class="font-bold text-[var(--color-text-main)] mb-2">Process</h3>
-            <p class="text-[var(--color-text-muted)] text-sm">Adjust settings and let AI do the work</p>
-          </div>
-          <div class="flex flex-col items-center">
-            <div class="w-16 h-16 rounded-full bg-[var(--color-primary)] text-white flex items-center justify-center text-2xl font-bold mb-4">3</div>
-            <h3 class="font-bold text-[var(--color-text-main)] mb-2">Download</h3>
-            <p class="text-[var(--color-text-muted)] text-sm">Get your processed images instantly</p>
-          </div>
+      <h2 class="text-3xl font-bold text-gray-900 mb-12 text-center">How It Works</h2>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-4xl mx-auto">
+        <div class="flex flex-col items-center text-center">
+          <div class="w-16 h-16 rounded-2xl bg-blue-600 text-white flex items-center justify-center text-2xl font-bold mb-4">1</div>
+          <h3 class="font-semibold text-gray-900 mb-2">Upload</h3>
+          <p class="text-gray-500 text-sm">Drop your images or click to browse</p>
+        </div>
+        <div class="flex flex-col items-center text-center">
+          <div class="w-16 h-16 rounded-2xl bg-blue-600 text-white flex items-center justify-center text-2xl font-bold mb-4">2</div>
+          <h3 class="font-semibold text-gray-900 mb-2">Process</h3>
+          <p class="text-gray-500 text-sm">Adjust settings - all done in browser</p>
+        </div>
+        <div class="flex flex-col items-center text-center">
+          <div class="w-16 h-16 rounded-2xl bg-blue-600 text-white flex items-center justify-center text-2xl font-bold mb-4">3</div>
+          <h3 class="font-semibold text-gray-900 mb-2">Download</h3>
+          <p class="text-gray-500 text-sm">Get your processed images instantly</p>
         </div>
       </div>
     </div>
   </section>
 
-  <section class="py-16">
+  <!-- Privacy Section -->
+  <section class="py-16 bg-white border-t border-gray-200">
     <div class="container mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="max-w-2xl mx-auto bg-[var(--color-surface-2)] rounded-2xl p-8 text-center">
-        <svg class="w-16 h-16 mx-auto mb-4 text-[var(--color-accent)]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/></svg>
-        <h2 class="text-2xl font-bold text-[var(--color-text-main)] mb-4">Your Images Never Leave Your Browser</h2>
-        <p class="text-[var(--color-text-muted)] mb-4">
-          All image processing happens entirely on your device. We don't upload your photos to any server.
-          This means your images are never transmitted over the internet, making our tools completely private and secure.
-          Even if you lose internet connection mid-process, your work will be saved locally.
+      <div class="max-w-2xl mx-auto bg-gray-50 rounded-2xl p-8 text-center">
+        <div class="w-16 h-16 mx-auto mb-4 rounded-full bg-green-100 flex items-center justify-center">
+          <svg class="w-8 h-8 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/></svg>
+        </div>
+        <h2 class="text-2xl font-bold text-gray-900 mb-4">Your Images Never Leave Your Browser</h2>
+        <p class="text-gray-600 mb-0">
+          All image processing happens on your device. We don't upload your photos to any server, 
+          making our tools completely private and secure.
         </p>
       </div>
     </div>
   </section>
 
-  <section class="py-16 bg-[var(--color-surface-2)]">
+  <!-- FAQ -->
+  <section class="py-16 bg-gray-50 border-t border-gray-200">
     <div class="container mx-auto px-4 sm:px-6 lg:px-8">
-      <h2 class="text-3xl font-bold text-[var(--color-text-main)] mb-8 text-center">Frequently Asked Questions</h2>
-      <div class="max-w-2xl mx-auto space-y-4">
-        <details class="group bg-[var(--color-surface)] border border-[var(--color-border)] rounded-lg overflow-hidden">
+      <h2 class="text-3xl font-bold text-gray-900 mb-8 text-center">Frequently Asked Questions</h2>
+      <div class="max-w-2xl mx-auto space-y-3">
+        <details class="group bg-white border border-gray-200 rounded-lg overflow-hidden">
           <summary class="flex items-center justify-between p-4 cursor-pointer list-none">
-            <span class="font-semibold text-[var(--color-text-main)] pr-4">Is this really free?</span>
-            <svg class="w-5 h-5 text-[var(--color-text-muted)] transition-transform duration-200 group-open:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+            <span class="font-medium text-gray-900">Is this really free?</span>
+            <svg class="w-5 h-5 text-gray-400 transition-transform duration-200 group-open:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
           </summary>
-          <div class="px-4 pb-4 text-[var(--color-text-muted)]">Yes, absolutely free. No hidden fees, no premium tier, no watermarks on output.</div>
+          <div class="px-4 pb-4 text-gray-600">Yes, absolutely free. No hidden fees, no premium tier, no watermarks on output.</div>
         </details>
-        <details class="group bg-[var(--color-surface)] border border-[var(--color-border)] rounded-lg overflow-hidden">
+        <details class="group bg-white border border-gray-200 rounded-lg overflow-hidden">
           <summary class="flex items-center justify-between p-4 cursor-pointer list-none">
-            <span class="font-semibold text-[var(--color-text-main)] pr-4">Are my images secure?</span>
-            <svg class="w-5 h-5 text-[var(--color-text-muted)] transition-transform duration-200 group-open:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+            <span class="font-medium text-gray-900">Are my images secure?</span>
+            <svg class="w-5 h-5 text-gray-400 transition-transform duration-200 group-open:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
           </summary>
-          <div class="px-4 pb-4 text-[var(--color-text-muted)]">100% secure. All processing happens in your browser. We never see or store your images.</div>
+          <div class="px-4 pb-4 text-gray-600">100% secure. All processing happens in your browser. We never see or store your images.</div>
         </details>
-        <details class="group bg-[var(--color-surface)] border border-[var(--color-border)] rounded-lg overflow-hidden">
+        <details class="group bg-white border border-gray-200 rounded-lg overflow-hidden">
           <summary class="flex items-center justify-between p-4 cursor-pointer list-none">
-            <span class="font-semibold text-[var(--color-text-main)] pr-4">What formats do you support?</span>
-            <svg class="w-5 h-5 text-[var(--color-text-muted)] transition-transform duration-200 group-open:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+            <span class="font-medium text-gray-900">What formats do you support?</span>
+            <svg class="w-5 h-5 text-gray-400 transition-transform duration-200 group-open:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
           </summary>
-          <div class="px-4 pb-4 text-[var(--color-text-muted)]">JPG, PNG, GIF, SVG, WEBP, HEIC, TIFF, and more. Each tool supports specific formats.</div>
+          <div class="px-4 pb-4 text-gray-600">JPG, PNG, GIF, WEBP, HEIC, TIFF, and more. Each tool supports specific formats.</div>
         </details>
-        <details class="group bg-[var(--color-surface)] border border-[var(--color-border)] rounded-lg overflow-hidden">
+        <details class="group bg-white border border-gray-200 rounded-lg overflow-hidden">
           <summary class="flex items-center justify-between p-4 cursor-pointer list-none">
-            <span class="font-semibold text-[var(--color-text-main)] pr-4">Can I process multiple images at once?</span>
-            <svg class="w-5 h-5 text-[var(--color-text-muted)] transition-transform duration-200 group-open:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+            <span class="font-medium text-gray-900">Can I process multiple images at once?</span>
+            <svg class="w-5 h-5 text-gray-400 transition-transform duration-200 group-open:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
           </summary>
-          <div class="px-4 pb-4 text-[var(--color-text-muted)]">Yes! Most tools support batch processing. Upload up to 20 images at once.</div>
+          <div class="px-4 pb-4 text-gray-600">Yes! Most tools support batch processing. Upload up to 20 images at once.</div>
         </details>
-        <details class="group bg-[var(--color-surface)] border border-[var(--color-border)] rounded-lg overflow-hidden">
+        <details class="group bg-white border border-gray-200 rounded-lg overflow-hidden">
           <summary class="flex items-center justify-between p-4 cursor-pointer list-none">
-            <span class="font-semibold text-[var(--color-text-main)] pr-4">Do I need to create an account?</span>
-            <svg class="w-5 h-5 text-[var(--color-text-muted)] transition-transform duration-200 group-open:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+            <span class="font-medium text-gray-900">Do I need to create an account?</span>
+            <svg class="w-5 h-5 text-gray-400 transition-transform duration-200 group-open:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
           </summary>
-          <div class="px-4 pb-4 text-[var(--color-text-muted)]">No account needed. Use any tool instantly without signing up.</div>
-        </details>
-        <details class="group bg-[var(--color-surface)] border border-[var(--color-border)] rounded-lg overflow-hidden">
-          <summary class="flex items-center justify-between p-4 cursor-pointer list-none">
-            <span class="font-semibold text-[var(--color-text-main)] pr-4">Which devices work?</span>
-            <svg class="w-5 h-5 text-[var(--color-text-muted)] transition-transform duration-200 group-open:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
-          </summary>
-          <div class="px-4 pb-4 text-[var(--color-text-muted)]">Works on desktop, tablet, and mobile. Requires a modern browser with JavaScript enabled.</div>
+          <div class="px-4 pb-4 text-gray-600">No account needed. Use any tool instantly without signing up.</div>
         </details>
       </div>
     </div>
   </section>
 </Base>
-
-<style>
-  .text-gradient {
-    background: linear-gradient(135deg, var(--color-primary), var(--color-accent));
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
-  }
-</style>
